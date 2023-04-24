@@ -8,4 +8,6 @@ Also, this service allows you to perform CRUD operations on users from the datab
 ## Technology stack
 - Spring Boot 3
 - Spring Security
+- Redis
+- Docker compose
 - **Soon to increase**
