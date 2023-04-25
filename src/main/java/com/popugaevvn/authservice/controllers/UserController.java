@@ -3,14 +3,16 @@ package com.popugaevvn.authservice.controllers;
 import com.popugaevvn.authservice.models.Role;
 import com.popugaevvn.authservice.models.User;
 import com.popugaevvn.authservice.repository.user.UserRepository;
-import lombok.AllArgsConstructor;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@AllArgsConstructor
+@RequiredArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
 @RequestMapping("/api/v1/users")
 public class UserController {
 

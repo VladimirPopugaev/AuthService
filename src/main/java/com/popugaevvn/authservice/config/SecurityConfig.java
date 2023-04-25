@@ -19,13 +19,12 @@ public class SecurityConfig {
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
 
-    // TODO: add matching requests paths
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("api/v1/auth/**").permitAll()
+                .requestMatchers("api/v1/auth/**", "/swagger**/**", "/doc.html","/webjars/**", "/v3/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement()
