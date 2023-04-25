@@ -1,4 +1,4 @@
-package com.popugaevvn.authservice.api.filters;
+package com.popugaevvn.authservice.filters;
 
 import com.popugaevvn.authservice.services.JwtService;
 import jakarta.servlet.FilterChain;

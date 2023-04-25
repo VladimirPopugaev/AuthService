@@ -1,8 +1,11 @@
 package com.popugaevvn.authservice.models;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,11 +15,15 @@ import java.util.Collection;
 import java.util.List;
 
 @Data
+@Builder
 @AllArgsConstructor
 @RedisHash("User")
 public class User implements Serializable, UserDetails {
 
+    @Id
+    @Indexed
     private Integer id;
+    @Indexed
     private String login;
     private String hashPassword;
     private Role role;

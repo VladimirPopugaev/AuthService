@@ -33,7 +33,7 @@ public class JwtService {
         return Jwts.parserBuilder()
                 .setSigningKey(getSignInKey())
                 .build()
-                .parseClaimsJwt(token)
+                .parseClaimsJws(token)
                 .getBody();
     }
 
@@ -62,7 +62,7 @@ public class JwtService {
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 60 * 60 * 24)) // Expiration of token is 24 h
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24)) // Expiration of token is 24 h
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
