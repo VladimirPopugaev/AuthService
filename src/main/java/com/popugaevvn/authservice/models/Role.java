@@ -1,5 +1,15 @@
 package com.popugaevvn.authservice.models;
 
 public enum Role {
-    ADMIN, USER
+    ROLE_ADMIN("ADMIN"), ROLE_USER("USER");
+
+    private final String role;
+
+    Role(String role) {
+        this.role = role;
+    }
+
+    public String getRole() {
+        return role;
+    }
 }

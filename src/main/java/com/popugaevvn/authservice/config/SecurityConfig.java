@@ -1,9 +1,11 @@
 package com.popugaevvn.authservice.config;
 
 import com.popugaevvn.authservice.filters.JwtAuthenticationFilter;
+import com.popugaevvn.authservice.models.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -25,6 +27,8 @@ public class SecurityConfig {
                 .csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers("api/v1/auth/**", "/swagger**/**", "/doc.html","/webjars/**", "/v3/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "api/v1/users").hasRole(Role.ROLE_ADMIN.getRole())
+                .requestMatchers(HttpMethod.GET, "api/v1/users/*").hasRole(Role.ROLE_ADMIN.getRole())
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement()

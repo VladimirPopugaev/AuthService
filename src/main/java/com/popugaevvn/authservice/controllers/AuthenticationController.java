@@ -3,7 +3,7 @@ package com.popugaevvn.authservice.controllers;
 import com.popugaevvn.authservice.api.requests.auth.AuthenticationRequest;
 import com.popugaevvn.authservice.api.requests.register.RegisterRequest;
 import com.popugaevvn.authservice.api.responses.auth.AuthenticationResponse;
-import com.popugaevvn.authservice.services.AuthenticationService;
+import com.popugaevvn.authservice.services.auth.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
