@@ -7,7 +7,7 @@ networks:
 services:
     # Redis - Key-value Store
     redis:
-      container_name: redis
+      container_name: redis-auth
       image: redis:latest
       restart: always
       entrypoint: redis-server --appendonly yes --requirepass redis --maxmemory 512mb --maxmemory-policy allkeys-lru
@@ -18,6 +18,23 @@ services:
       volumes:
         - redis-data:/data
 
+    server:
+      container_name: server-auth
+      build: .
+#        context: ./
+#        dockerfile: Dockerfile
+      restart: on-failure
+      ports:
+        - "8085:8085"
+      networks:
+        - default
+      depends_on:
+        - redis
+      volumes:
+        - spring-service-data:/data
+
+
 volumes:
+  spring-service-data:
   redis-data:
     driver: local
