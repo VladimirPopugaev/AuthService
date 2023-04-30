@@ -33,8 +33,21 @@ services:
       volumes:
         - spring-service-data:/data
 
+    rabbit_mq:
+      hostname:   'dev-rabbitmq'
+      image: rabbitmq:3.11-management
+      container_name: rabbit-mq-auth
+      ports:
+        - "5672:5672"
+        - "15672:15672"
+      volumes:
+        - '~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/mnesia/'
+      networks:
+        - default
+
 
 volumes:
+  rabbit-data:
   spring-service-data:
   redis-data:
     driver: local

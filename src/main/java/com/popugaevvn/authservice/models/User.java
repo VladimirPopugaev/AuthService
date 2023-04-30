@@ -1,5 +1,8 @@
 package com.popugaevvn.authservice.models;
 
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,6 +30,10 @@ public class User implements Serializable, UserDetails {
     private String login;
     private String hashPassword;
     private Role role;
+
+    @Email
+    @NotEmpty(message = "Email cannot be empty")
+    private String email;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
